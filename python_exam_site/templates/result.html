@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+        p {
+            color: #555;
+            margin: 0.5rem 0;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            color: #777;
+        }
+        a {
+            display: inline-block;
+            margin-top: 1.5rem;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            margin-top: 2rem;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Senin skorun: {{ score }}</h1>
+        <p>Sen en yüksek skorun: {{ user_highest_score }}</p>
+        <p>Genel en yüksek skor: {{ global_highest_score }}</p>
+        <p>Genel en yüksek sonucu alanlar:</p>
+        <ul>
+            {% for user in global_highest_users %}
+            <li>{{ user.username }}</li>
+            {% endfor %}
+        </ul>
+        <a href="{{ url_for('exam', username=username) }}">Retake Exam</a>
+        <footer>
+            <p>Sıla Taştekin tarafından öğrencilerine özel olarak geliştirildi</p>
+        </footer>
+    </div>
+</body>
+</html>
